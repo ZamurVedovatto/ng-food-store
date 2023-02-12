@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Cart } from 'src/app/shared/models/Cart';
+import { CartItem } from 'src/app/shared/models/CartItem';
 import { Food } from 'src/app/shared/models/Food';
 
 @Injectable({
@@ -25,7 +26,7 @@ export class CartService {
   }
 
   changeQuantity(foodId: string, quantity: number) {
-    let cartItem = this.cart.items.find((item) => item.food.id === food.id);
+    let cartItem = this.cart.items.find((item) => item.food.id === foodId);
     if (!cartItem) return;
 
     cartItem.quantity = quantity;

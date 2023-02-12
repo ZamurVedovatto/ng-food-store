@@ -12,16 +12,18 @@ export class HomeComponent implements OnInit {
   foods: Food[] = [];
 
   constructor(
-    private service: FoodService,
+    private foodService: FoodService,
     private activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.params.subscribe((params) => {
       if (params['searchTerm']) {
-        this.foods = this.service.getAllFoodsBySearchTerm(params['searchTerm']);
+        this.foods = this.foodService.getAllFoodsBySearchTerm(
+          params['searchTerm']
+        );
       } else if (params['tag']) {
-        this.foods = this.service.getAllFoodsByTag(params['tag']);
+        this.foods = this.foodService.getAllFoodsByTag(params['tag']);
       } else {
-        this.foods = this.service.getAll();
+        this.foods = this.foodService.getAll();
       }
     });
   }

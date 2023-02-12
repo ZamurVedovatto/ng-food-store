@@ -11,8 +11,8 @@ import { FoodService } from 'src/app/services/food.service';
 export class TagsComponent implements OnInit {
   tags?: Tag[];
 
-  constructor(private service: FoodService) {
-    this.tags = this.service.getAllTags();
+  constructor(private foodService: FoodService) {
+    this.tags = this.foodService.getAllTags();
   }
 
   ngOnInit(): void {}
