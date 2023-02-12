@@ -5,7 +5,6 @@ ul {
     flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
-
     li {
         a {
             height: 22.5rem;
@@ -35,7 +34,7 @@ ul {
                     top: 0.5rem;
                     right: 1rem;
                     font-size: 1.2rem;
-                    &.not{
+                    &.not {
                         color: grey;
                     }
                 }
@@ -60,13 +59,13 @@ ul {
                         }
                     }
 
-                    .cook-time{
+                    .cook-time {
                         font-size: 0.9rem;
                         flex: 3;
                         text-align: right;
                     }
                 }
-                .price{
+                .price {
                     position: absolute;
                     bottom: 0;
                     left: 0.9rem;
