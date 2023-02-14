@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { RatingModule } from 'ng-starrating';
 
@@ -16,7 +17,7 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, HomeComponent, SearchComponent, TagsComponent, FoodPageComponent, CartPageComponent, TitleComponent, NotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, RatingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, RatingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
