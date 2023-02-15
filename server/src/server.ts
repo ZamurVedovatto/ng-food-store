@@ -1,8 +1,11 @@
 import express from "express";
 import cors from "cors";
-import { sample_foods, sample_tags } from "./data";
+import bodyParser from 'body-parser';
+import { sample_foods, sample_tags, sample_users } from "./data";
+import jwt from "jsonwebtoken";
 
 const app = express();
+app.use(bodyParser.json());
 app.use(
   cors({
     credentials: true,
@@ -13,6 +16,30 @@ app.use(
 app.get("/api/foods", (req, res) => {
   res.send(sample_foods);
 });
+
+app.post("/api/users/login", (req, res) => {
+  const {email, password} = req.body;
+  const user = sample_users.find(user => user.email === email && user.password === password);
+
+  if(user) {
+    res.send(generateTokenReponse(user));
+  }
+  else {
+    const BAD_REQUEST = 400;
+    res.status(BAD_REQUEST).send("Username or password is invalid!");
+  }
+})
+
+const generateTokenReponse = (user : any) => {
+  const token = jwt.sign({
+    email:user.email, isAdmin: user.isAdmin
+  }, "SomeRandomText",{
+    expiresIn: "30d"
+  });
+
+  user.token = token;
+  return user;
+}
 
 app.get("/api/foods/search/:searchTerm", (req, res) => {
   const searchTerm = req.params.searchTerm;
